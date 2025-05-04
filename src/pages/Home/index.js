@@ -16,6 +16,7 @@ const Page = () => {
   const data = useData()
   const last = Array.from(data.data?.events || [])
   last.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const lastEvent = last[0] || null;
   return <>
     <header>
       <Menu />
@@ -118,12 +119,12 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        {last && (
+        {lastEvent && (
           <EventCard
-            imageSrc={last[0]?.cover}
-            imageAlt={last[0]?.description}
-            title={last[0]?.title}
-            date={new Date(last[0]?.date)}
+            imageSrc={lastEvent?.cover}
+            imageAlt={lastEvent?.description}
+            title={lastEvent?.title}
+            date={new Date(lastEvent?.date)}
             small
             label="boom"
           />
