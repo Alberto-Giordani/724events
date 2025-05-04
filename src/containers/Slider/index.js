@@ -22,7 +22,7 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
-        <React.Fragment key={`${event.title}-${event.date}`}>
+        <React.Fragment key={`${event.title}`}>
           <div
             className={`SlideCard SlideCard--${index === idx ? "display" : "hide"
               }`}
