@@ -12,6 +12,7 @@ import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
+
 const Page = () => {
   const data = useData()
   const last = Array.from(data.data?.events || [])
@@ -118,13 +119,14 @@ const Page = () => {
     </main>
     <footer className="row">
       <div className="col presta">
-        <h3>Notre derniére prestation</h3>
+        <h3>Notre dernière prestation</h3>
         {lastEvent && (
           <EventCard
-            imageSrc={lastEvent?.cover}
-            imageAlt={lastEvent?.description}
-            title={lastEvent?.title}
-            date={new Date(lastEvent?.date)}
+            data-testid="last-event-card-testid"
+            imageSrc={lastEvent.cover}
+            imageAlt={lastEvent.description}
+            title={lastEvent.title}
+            date={new Date(lastEvent.date)}
             small
             label="boom"
           />
