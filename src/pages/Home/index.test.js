@@ -42,17 +42,23 @@ describe("When Form is created", () => {
 describe("When a page is created", () => {
   it("a list of events is displayed", async () => {
     render(<Home />);
-    const eventList = document.getElementById("events");
-    expect(eventList).toBeDefined();
+    const réalisations = document.getElementById("nos-realisations");
+    await within(réalisations).findByText("Nos réalisations");
+    await screen.findByAltText("Présentation des nouveaux usages UX.");
+    await screen.findByText("User&product MixUsers");
   })
   it("a list of people is displayed", async () => {
     render(<Home />);
-    await screen.findAllByTestId("card-image-testid");
+    await screen.findByText("Une équipe d’experts dédiés à l’organisation de vos événements");
+    await screen.findByText("Samira");
+    await screen.findByText("CEO");
   })
   it("a footer is displayed", async () => {
     render(<Home />);
-    const footer = document.querySelector('footer');
-    expect(footer).not.toBeNull();
+    const footer = await screen.findByRole("contentinfo");
+    await within(footer).findByText("Notre dernière prestation");
+    await within(footer).findByText("contact@724events.com");
+
   })
   it("an event card, with the last event, is displayed", async () => {
     render(<Home />);
