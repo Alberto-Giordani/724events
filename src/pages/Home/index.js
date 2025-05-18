@@ -14,6 +14,7 @@ import { useData } from "../../contexts/DataContext";
 
 
 const Page = () => {
+  // const { last } = useData()
   const data = useData()
   const last = Array.from(data.data?.events || [])
   last.sort((a, b) => new Date(b.date) - new Date(a.date));
